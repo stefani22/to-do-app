@@ -1,6 +1,10 @@
 import React, { Fragment, useState } from "react";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+const API_URL = isLocalhost ? "http://localhost:5000" : "";
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);

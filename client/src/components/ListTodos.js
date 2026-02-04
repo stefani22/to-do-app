@@ -1,7 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+const API_URL = isLocalhost ? "http://localhost:5000" : "";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);

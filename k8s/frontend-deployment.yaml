@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-frontend
+  namespace: todo-app
+  labels:
+    app: todo-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-frontend
+  template:
+    metadata:
+      labels:
+        app: todo-frontend
+    spec:
+      containers:
+        - name: todo-frontend
+          image: stefanii22/todo-frontend:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://todo-backend-service:5000"

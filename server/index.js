@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 // ROUTES //
 
 // CREATE A TODO
-app.post("/todos", async (req, res) => {
+app.post("/api/todos", async (req, res) => {
   try {
     const { description } = req.body;
     const newTodo = await pool.query(
@@ -42,7 +42,7 @@ app.post("/todos", async (req, res) => {
 });
 
 // GET ALL TODOS
-app.get("/todos", async (req, res) => {
+app.get("/api/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
     res.json(allTodos.rows);
@@ -52,7 +52,7 @@ app.get("/todos", async (req, res) => {
 });
 
 // GET A TODO
-app.get("/todos/:id", async (req, res) => {
+app.get("/api/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
@@ -65,7 +65,7 @@ app.get("/todos/:id", async (req, res) => {
 });
 
 // UPDATE A TODO
-app.put("/todos/:id", async (req, res) => {
+app.put("/api/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const { description } = req.body;
@@ -81,7 +81,7 @@ app.put("/todos/:id", async (req, res) => {
 });
 
 // DELETE A TODO
-app.delete("/todos/:id", async (req, res) => {
+app.delete("/api/todos/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deleteTodo = await pool.query("DELETE FROM todo WHERE todo_id = $1", [

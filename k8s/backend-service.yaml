@@ -9,5 +9,5 @@ spec:
   ports:
     - name: http
       port: 5000       # Портa на сервисот во кластерот
-      targetPort: 5000 # Портa на кој слуша контејнерот во подот
+      targetPort: 5000 # Портa на којa слуша контејнерот во подот
   type: ClusterIP

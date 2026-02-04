@@ -10,7 +10,7 @@ const EditTodo = ({ todo }) => {
     try {
       const body = { description };
 
-      await fetch(`${API_URL}/todos/${todo.todo_id}`, {
+      await fetch(`${API_URL}/api/todos/${todo.todo_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

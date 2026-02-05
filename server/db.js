@@ -1,22 +1,13 @@
-// configure how to connect to ur database
-
-const Pool = require("pg").Pool;
+const { Pool } = require("pg");
 require("dotenv").config();
 
-const devConfig = {
-  user: process.env.PG_USER,
-  password: process.env.PG_PASSWORD,
-  host: process.env.PG_HOST,
-  database: process.env.PG_DATABASE,
-  port: process.env.PG_PORT,
-};
+const pool = new Pool({
 
-const proConfig = {
-  connectionString: process.env.DATABASE_URL, //heroku addons
-};
-
-const pool = new Pool(
-    process.env.NODE_ENV === "production" ? proConfig : devConfig
-);
+  user: process.env.DB_USER || process.env.PG_USER || "postgres",
+  password: process.env.DB_PASSWORD || process.env.PG_PASSWORD || "postgres",
+  host: process.env.DB_HOST || process.env.PG_HOST || "localhost",
+  database: process.env.DB_NAME || process.env.PG_DATABASE || "perntodo",
+  port: Number(process.env.DB_PORT || process.env.PG_PORT || 5432),
+});
 
 module.exports = pool;

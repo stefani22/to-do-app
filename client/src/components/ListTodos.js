@@ -1,18 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import EditTodo from "./EditTodo";
 
-const isLocalhost =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1";
-
-const API_URL = isLocalhost ? "http://localhost:5000" : "";
+const API_URL = "/api";
 
 const ListTodos = () => {
   const [todos, setTodos] = useState([]);
 
   const deleteTodo = async (id) => {
     try {
-      await fetch(`${API_URL}/api/todos/${id}`, {
+      await fetch(`${API_URL}/todos/${id}`, {
         method: "DELETE",
       });
 
@@ -24,7 +20,7 @@ const ListTodos = () => {
 
   const getTodos = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/todos`);
+      const response = await fetch(`${API_URL}/todos`);
       const jsonData = await response.json();
       setTodos(jsonData);
     } catch (err) {

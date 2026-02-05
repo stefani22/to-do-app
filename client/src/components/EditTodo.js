@@ -1,10 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-const isLocalhost =
-    window.location.hostname === "localhost" ||
-    window.location.hostname === "127.0.0.1";
-
-const API_URL = isLocalhost ? "http://localhost:5000" : "";
+const API_URL = "/api";
 
 const EditTodo = ({ todo }) => {
   const [description, setDescription] = useState(todo.description);
@@ -14,7 +10,7 @@ const EditTodo = ({ todo }) => {
     try {
       const body = { description };
 
-      await fetch(`${API_URL}/api/todos/${todo.todo_id}`, {
+      await fetch(`${API_URL}/todos/${todo.todo_id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),

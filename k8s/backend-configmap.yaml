@@ -8,3 +8,4 @@ data:
   DB_HOST: "todo-postgres"
   DB_PORT: "5432"
   DB_NAME: "perntodo"
+  DB_USER: "postgres"

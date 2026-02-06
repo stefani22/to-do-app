@@ -8,6 +8,6 @@ spec:
     app: todo-backend
   ports:
     - name: http
-      port: 5000       # Портa на сервисот во кластерот
-      targetPort: 5000 # Портa на којa слуша контејнерот во подот
+      port: 5000       
+      targetPort: 5000 
   type: ClusterIP

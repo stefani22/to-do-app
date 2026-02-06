@@ -8,6 +8,6 @@ spec:
     app: todo-frontend
   ports:
     - name: http
-      port: 3000       # Порта преку сервисот во кластерот
-      targetPort: 3000 # Порта во контејнерот
+      port: 3000       
+      targetPort: 3000 
   type: ClusterIP
